@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e817e9642efde37428d63dea74106ece
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PdsPrimary: {fileID: 11400000, guid: f74e69e1edecba44eb0e5f0fe7c61a89, type: 2}
+  - PdsSecondary: {fileID: 11400000, guid: f74e69e1edecba44eb0e5f0fe7c61a89, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
