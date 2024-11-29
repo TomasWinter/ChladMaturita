@@ -14,8 +14,6 @@ public class PlrCameraScript : MonoBehaviour
     [Range(0.001f,0.1f)] [SerializeField] float bobIntensity = 1;
     [SerializeField] float smoothing = 10;
 
-    float timer = 0;
-
     [SerializeField] Transform link;
 
     [SerializeField] Transform plr;
@@ -27,18 +25,20 @@ public class PlrCameraScript : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
         float moveBobModifier = (float)PlrMovementScript.Instance.MoveState;
 
+        //Otáèení kamery podle myši
         camY += Input.GetAxis("Mouse X") * Time.deltaTime * 1000 * sensitivity;
         camX -= Input.GetAxis("Mouse Y") * Time.deltaTime * 1000 * sensitivity;
-        camX = Mathf.Clamp(camX, -90, 90);
+        camX = Mathf.Clamp(camX, -90, 90); //Omezení rotace
 
+        //Aplikování rotace
         plr.localRotation = Quaternion.Euler(plr.localEulerAngles.x, camY, plr.localEulerAngles.z);
         transform.localRotation = Quaternion.Euler(camX,0, 0);
 
-        camPos.y = Mathf.Lerp(camPos.y, Mathf.Sin(timer * bobSpeed * moveBobModifier) * bobIntensity, Time.deltaTime * smoothing ) ;
-        camPos.x = Mathf.Lerp(camPos.x, Mathf.Cos(timer * (bobSpeed * moveBobModifier) / 2) * bobIntensity, Time.deltaTime * smoothing);
+        //Houpání kamery
+        camPos.y = Mathf.Lerp(camPos.y, Mathf.Sin(Time.time * bobSpeed * moveBobModifier) * bobIntensity, Time.deltaTime * smoothing ) ;
+        camPos.x = Mathf.Lerp(camPos.x, Mathf.Cos(Time.time * (bobSpeed * moveBobModifier) / 2) * bobIntensity, Time.deltaTime * smoothing);
         transform.localPosition = camPos + camPosOffset;
 
 

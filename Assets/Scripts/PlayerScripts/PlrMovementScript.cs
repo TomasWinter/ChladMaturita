@@ -27,36 +27,38 @@ public class PlrMovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 dir = Vector3.zero;
-        float speedmod = Mathf.Clamp(1f - speedModifiers.Sum(), 0.05f, 10f);
+        float speedmod = Mathf.Clamp(1f - speedModifiers.Sum(), 0.05f, 10f); //Seètení modifikátorù rychlosti
         bool sprinting = false;
 
+        //Dopøedu, dozadu
         if (Input.GetKey(KeyCode.W))
             dir.z = 1;
         else if (Input.GetKey(KeyCode.S))
             dir.z = -1;
 
+        //Doleva, doprava
         if (Input.GetKey(KeyCode.D))
             dir.x = 1;
         else if (Input.GetKey(KeyCode.A))
             dir.x = -1;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)) //Sprint
         { 
             speedmod *= 2; 
             sprinting = true;
         }
 
-        if (Physics.Raycast(transform.position, -transform.up, 1.1f))
+        if (Physics.Raycast(transform.position, -transform.up, 1.1f)) //Kontrola letu
         {
             rb.drag = 5;
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space)) //skok
             {
                 speedmod *= 0.05f;
                 rb.drag = 0;
                 rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
                 MoveState = MovementState.Airborne;
             }
-            else
+            else //Zmìna stavu pohybu
             {
                 if (dir != Vector3.zero)
                 {
@@ -76,7 +78,7 @@ public class PlrMovementScript : MonoBehaviour
             rb.drag = 0;
         }
 
-        Vector3 finalForce = dir.normalized * speed * speedmod;
+        Vector3 finalForce = dir.normalized * speed * speedmod; //Seètení smìru a rychlosti
         rb.AddRelativeForce(finalForce, ForceMode.Force);
 
     }
