@@ -173,7 +173,7 @@ public class PlayerGuiManager : MonoBehaviour
         }
     }
     //Loot
-    public void Secured(int value)
+    public void Secured(string value)
     {
         securedText.text = $"SECURED: {value}";
         StartCoroutine(AnimateSecured());

@@ -19,9 +19,16 @@ public class LevelManager : MonoBehaviour
 
     public void SecureLoot(int x)
     {
-        Payout += x;
-        PlayerGuiManager.Instance.Secured(x);
-        BagSecured?.Invoke();
+        if (x == -1)
+        {
+            PlayerGuiManager.Instance.Secured("x-x");
+        }
+        else
+        {
+            Payout += x;
+            PlayerGuiManager.Instance.Secured(x.ToString());
+            BagSecured?.Invoke();
+        }
     }
 
     public void AnswerPager()

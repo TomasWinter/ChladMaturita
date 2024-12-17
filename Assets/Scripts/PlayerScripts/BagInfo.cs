@@ -8,7 +8,7 @@ public class BagInfo
         new(LootType.BlobbyMeal,100,2,"BlobbyMeal"),
         new(LootType.Hamburger,50,1.5f,"Hamburger"),
         new(LootType.Air,0,1,"Air"),
-        new(LootType.Body,0,1.5f,"x-x")
+        new(LootType.Body,-1,1.5f,"x-x")
     };
 
     public static BagInfo GetInfo(LootType lt)

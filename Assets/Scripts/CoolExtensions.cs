@@ -9,7 +9,7 @@ public static class CoolExtensions
     {
         if (x.Count == 0)
         {
-            Debug.LogWarning("SpawnPoolField list was empty");
+            Debug.LogWarning("list was empty");
             return null;
         }
 
@@ -28,10 +28,13 @@ public static class CoolExtensions
         foreach (int prob in arrayProbability)
         {
             if (prob > randomSelected)
+            {
+                //Debug.Log($"Total:{totalProbability}; Selected:{randomSelected}; i:{i}");
                 return x[i];
+            }
             i++;
         }
-
+        
         return null;
     }
 }

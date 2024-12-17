@@ -15,7 +15,12 @@ MonoBehaviour:
   fields:
   - Prefab: {fileID: 6099122176931449773, guid: b07c7db124e70af4b9ff71af9e58734f,
       type: 3}
-    Probability: 70
+    Probability: 50
+  - Prefab: {fileID: 581499627823618570, guid: 50ff3a5b230dbdc46bd58f12039d41c0, type: 3}
+    Probability: 15
+  - Prefab: {fileID: 1432882990195924547, guid: 24417469514d8d84bb6917f38cb97e4f,
+      type: 3}
+    Probability: 25
   - Prefab: {fileID: 5968878478548314703, guid: e246e395070201143a8f9faad5d7c286,
       type: 3}
-    Probability: 30
+    Probability: 10
