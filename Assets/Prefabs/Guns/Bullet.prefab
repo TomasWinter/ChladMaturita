@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2741517877224638679}
   - component: {fileID: 6489061194725200215}
   - component: {fileID: 195727344492484187}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,3 +186,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followAxis: {x: 1, y: 1, z: 1}
   scale: 0
+  bigger: 1

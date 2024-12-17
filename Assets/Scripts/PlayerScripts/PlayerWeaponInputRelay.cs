@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerWeaponInputRelay : MonoBehaviour
 {
-    BasicGunScript basicGunScript;
+    GunScriptParent gunScript;
 
     private void Start()
     {
-        basicGunScript = GetComponent<BasicGunScript>();
+        gunScript = GetComponent<GunScriptParent>();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            basicGunScript.Shoot(true);
+            gunScript.Shoot(true);
         else if (Input.GetKey(KeyCode.Mouse0))
-            basicGunScript.Shoot(false);
+            gunScript.Shoot(false);
         else if (Input.GetKey(KeyCode.R))
-            basicGunScript.Reload();
+            gunScript.Reload();
     }
 }

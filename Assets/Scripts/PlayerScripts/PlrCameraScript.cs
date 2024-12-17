@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlrCameraScript : MonoBehaviour
 {
+    public static PlrCameraScript Instance { get; private set; }
+
     float camY = 0;
     float camX = 0;
 
@@ -18,11 +20,13 @@ public class PlrCameraScript : MonoBehaviour
 
     [SerializeField] Transform plr;
 
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
         Cursor.lockState = CursorLockMode.Locked;
         camPosOffset = transform.localPosition;
     }
+
     private void Update()
     {
         float moveBobModifier = (float)PlrMovementScript.Instance.MoveState;

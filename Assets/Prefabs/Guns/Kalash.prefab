@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 5587945885451166660}
+  shotAudio: {fileID: 8300000, guid: a5cfdd0de2e109b46a931f9f4f3dca02, type: 3}
 --- !u!212 &2031233445576037508
 SpriteRenderer:
   m_ObjectHideFlags: 0

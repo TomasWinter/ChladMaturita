@@ -27,19 +27,25 @@ public class PlrMovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 dir = Vector3.zero;
-        float speedmod = Mathf.Clamp(1f - speedModifiers.Sum(), 0.05f, 10f); //Seètení modifikátorù rychlosti
+
+        float speedmod = 1; //Seètení modifikátorù rychlosti
+        foreach (float n in speedModifiers)
+        {
+            speedmod *= n;
+        }
+
         bool sprinting = false;
 
         //Dopøedu, dozadu
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(Keybinds.Forward))
             dir.z = 1;
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(Keybinds.Backward))
             dir.z = -1;
 
         //Doleva, doprava
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(Keybinds.Right))
             dir.x = 1;
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(Keybinds.Left))
             dir.x = -1;
 
         if (Input.GetKey(KeyCode.LeftShift)) //Sprint

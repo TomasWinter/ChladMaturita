@@ -7,13 +7,10 @@ public class BulletScript : MonoBehaviour
     [SerializeField] float timeToDie = 10;
     [SerializeField] int damage = 1;
 
-    Color color = Color.white;
+    [SerializeField] OwnerType owner;
+
+    public Color? color { get; private set; } = null;
     float timer = 0;
-    private void Start()
-    {
-        color = new Color(Random.Range(0.1f,1), Random.Range(0.1f, 1), Random.Range(0.1f, 1));
-        GetComponent<SpriteRenderer>().color = color;
-    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -21,15 +18,19 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Constructor(int d, float? ttd = null)
+    public void Constructor(int d, OwnerType o, float? ttd = null, Color? c = null)
     {
         timeToDie = ttd ?? timeToDie;
         damage = d;
+        owner = o;
+
+        color = c ?? new Color(Random.Range(0.1f, 1), Random.Range(0.1f, 1), Random.Range(0.1f, 1));
+        GetComponent<SpriteRenderer>().color = (Color)color;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        GenericHealthScript healthScript = other.GetComponent<GenericHealthScript>();
+        HealthScriptParent healthScript = other.GetComponent<HealthScriptParent>();
         if (healthScript != null)
         {
             healthScript.TakeDamage(damage);
@@ -39,9 +40,29 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GenericHealthScript healthScript = collision.transform.GetComponent<GenericHealthScript>();
-        if (healthScript != null)
-            healthScript.TakeDamage(damage);
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Shield" && owner != OwnerType.Player)
+        {
+            return;
+        }
+        else
+        {
+            HealthScriptParent healthScript = collision.transform.GetComponent<HealthScriptParent>();
+            if (healthScript != null)
+                healthScript.TakeDamage(damage);
+
+            GameObject splat = GlobalVals.Instance.Splat;
+            Vector3 normal = collision.contacts[0].normal;
+            splat.transform.position = collision.contacts[0].point + (normal * 0.01f); ;
+            splat.transform.rotation = Quaternion.LookRotation(normal);
+            splat.GetComponent<SpriteRenderer>().color = (Color)color;
+            splat.transform.parent = collision.transform;
+            Destroy(gameObject);
+        }
     }
+}
+
+public enum OwnerType
+{
+    Player,
+    Enemy
 }

@@ -7,7 +7,7 @@ public class CalmEnemyBehavior : CalmBehavior
 {
     private void Awake()
     {
-        DetectionLvl = 1;
+        DetectionLvl = 2;
     }
 
     protected override IEnumerator DetectedSomething()
@@ -18,11 +18,11 @@ public class CalmEnemyBehavior : CalmBehavior
         alertText.text = "ì";
         yield return new WaitForSeconds(3);
         GlobalEvents.Instance.alarmRaised?.Invoke();
-        Shutdown();
     }
 
     public override void AlarmRaised()
     {
+        transform.GetComponent<FollowWaypoints>().Shutdown();
         GetComponent<EnemyBehavior>().enabled = true;
         Shutdown();
     }

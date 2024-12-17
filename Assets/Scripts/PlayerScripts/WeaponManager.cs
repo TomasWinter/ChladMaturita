@@ -10,6 +10,8 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
     const int susLvl = 3;
 
     [SerializeField] Transform weaponParent;
+    [Header("Audio")]
+    [SerializeField] AudioClip equipSound;
     Animator animator;
 
     int[] Ammo = { -1, -1 };
@@ -58,12 +60,12 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
         active = false;
         GameObject gun = Instantiate(x.Prefab, weaponParent);
 
-        BasicGunScript bgs = gun.GetComponent<BasicGunScript>();
+        GunScriptParent bgs = gun.GetComponent<GunScriptParent>();
         bgs.OnWeaponAwake(x, Ammo[b - 1], animator,true);
 
         gun.name = "Tool";
 
-        animator.runtimeAnimatorController = x.AnimatorOverrideController;
+        animator.runtimeAnimatorController = x.AnimatorController;
         animator.SetTrigger("Equip");
 
         current = b;
@@ -71,7 +73,8 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
         animationDone = false;
 
         gun.AddComponent<PlayerWeaponInputRelay>();
-        
+
+        AudioManager.Play(gameObject,equipSound,3);
         yield return new WaitUntil(() => animationDone);
         
         susIndicator.SusLvl = susLvl;
@@ -85,9 +88,10 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
             active = false;
             animator.SetTrigger("Unequip");
             animationDone = false;
-            Ammo[current - 1] = CurrentGO.GetComponent<BasicGunScript>().Ammo;
-            CurrentGO.GetComponent<BasicGunScript>().OnWeaponDestroy();
+            Ammo[current - 1] = CurrentGO.GetComponent<GunScriptParent>().Ammo;
+            CurrentGO.GetComponent<GunScriptParent>().OnWeaponDestroy();
 
+            AudioManager.PlayReversed(gameObject, equipSound, 3);
             yield return new WaitUntil(() => animationDone);
 
             Destroy(CurrentGO);

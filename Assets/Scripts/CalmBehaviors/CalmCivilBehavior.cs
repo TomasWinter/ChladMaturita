@@ -7,9 +7,10 @@ using UnityEngine.AI;
 public class CalmCivilBehavior : CalmBehavior
 {
     NavMeshAgent agent;
+    [SerializeField] Animator animator;
     private void Awake()
     {
-        DetectionLvl = 2;
+        DetectionLvl = 3;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -20,8 +21,6 @@ public class CalmCivilBehavior : CalmBehavior
         alertText.text = "ì";
         yield return new WaitForSeconds(3);
         GlobalEvents.Instance.alarmRaised?.Invoke();
-        Flee();
-        Shutdown();
     }
 
     public override void AlarmRaised()
@@ -32,6 +31,9 @@ public class CalmCivilBehavior : CalmBehavior
 
     private void Flee()
     {
+        transform.GetComponent<FollowWaypoints>().Shutdown();
+        agent.updateRotation = true;
+        animator.SetBool("Walking", true);
         agent.SetDestination(ExitMarker.FindClosest(transform.position).transform.position);
         agent.speed *= 2;
     }

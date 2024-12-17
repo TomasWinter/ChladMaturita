@@ -12,6 +12,5 @@ public class CollisionDetector : MonoBehaviour
     {
         if (other.gameObject == Target)
             Detected?.Invoke();
-
     }
 }

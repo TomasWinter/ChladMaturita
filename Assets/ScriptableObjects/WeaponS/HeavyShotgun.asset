@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed85ea0c5866a146abc66a285778345, type: 3}
+  m_Name: HeavyShotgun
+  m_EditorClassIdentifier: 
+  ID: 2
+  BulletForce: 30
+  Damage: 1
+  FireRate: 1
+  FullAuto: 0
+  MaxAmmo: 3
+  Spread: 0.15
+  Burst: 10
+  Prefab: {fileID: 3580436422958251292, guid: 2a334d3a1df16eb44b2efa2c0d37092a, type: 3}
+  AnimatorController: {fileID: 9100000, guid: 169ff5be8ef8658479d41f23558d761f, type: 2}

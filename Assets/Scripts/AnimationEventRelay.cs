@@ -14,11 +14,8 @@ public class AnimationEventRelay : MonoBehaviour
         }
     }
 
-    public void RelayStart(string name = "")
+    public void PlayAudio(AudioClip clip)
     {
-        foreach (IAnimationReactor a in transform.GetComponentsInChildren<IAnimationReactor>())
-        {
-            a.AnimStart(name);
-        }
+        AudioManager.Play(gameObject, clip, 10f);
     }
 }

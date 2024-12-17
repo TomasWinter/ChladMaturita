@@ -8,6 +8,7 @@ public abstract class ObjectiveParent
     protected bool done = false;
 
     protected WaypointInfo waypointInfo = null;
+
     public ObjectiveParent(string t,string d,WaypointInfo w = null)
     {
         Text = t;
@@ -33,7 +34,7 @@ public abstract class ObjectiveParent
         {
             if (waypointInfo != null && waypointInfo.Instance != null)
             {
-                Object.Destroy(waypointInfo.Instance);
+                BillboardManager.DestroyBillboard(waypointInfo.Instance);
             }
 
             enabled = false;
@@ -45,18 +46,10 @@ public abstract class ObjectiveParent
     {
         if (waypointInfo != null && waypointInfo.Parent != null)
         {
-            GameObject w = Object.Instantiate(GlobalVals.Instance.WaypointPrefab);
-            SpriteRenderer SR = w.GetComponent<SpriteRenderer>();
-            SR.sprite = GlobalVals.WaypointTypeDictionary[waypointInfo.Type];
-            SR.color = waypointInfo.WaypointColor;
-
-            w.transform.position = waypointInfo.Parent.position;
+            Transform t = null;
             if (waypointInfo.Sticky)
-            {
-                w.transform.parent = waypointInfo.Parent;
-            }
-
-            waypointInfo.Instance = w;
+                t = waypointInfo.Parent;
+            waypointInfo.Instance = BillboardManager.ImageBillboard(GlobalVals.WaypointTypeDictionary[waypointInfo.Type], waypointInfo.WaypointColor, waypointInfo.Parent.position, t);
         }
     }
 
@@ -67,10 +60,7 @@ public abstract class ObjectiveParent
             return;
         else
         {
-            if (waypointInfo != null && waypointInfo.Instance != null)
-            {
-                Object.Destroy(waypointInfo.Instance);
-            }
+            BillboardManager.DestroyBillboard(waypointInfo?.Instance);
 
             enabled = false;
             Finished?.Invoke();

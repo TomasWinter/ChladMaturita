@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Civilian
+  - SecureZone
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -34,8 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Bullets
+  - Bags
   - Humanoids
   - PlayerHands
   - Invisible

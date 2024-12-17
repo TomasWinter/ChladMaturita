@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RegularSpawnPool
   m_EditorClassIdentifier: 
   fields:
-  - Prefab: {fileID: 6672714621392396976, guid: d3d4e47189156e24ba5c8fdacec99f49,
+  - Prefab: {fileID: 6099122176931449773, guid: b07c7db124e70af4b9ff71af9e58734f,
       type: 3}
     Probability: 70
-  - Prefab: {fileID: 3459950503060570426, guid: 633a9ca92abb6d64a9f0aab80e7474d3,
+  - Prefab: {fileID: 5968878478548314703, guid: e246e395070201143a8f9faad5d7c286,
       type: 3}
     Probability: 30

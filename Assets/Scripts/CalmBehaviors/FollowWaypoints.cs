@@ -8,6 +8,7 @@ public class FollowWaypoints : MonoBehaviour, IDieOff
 {
     [SerializeField] List<WaypointMarker> waypoints;
     WaypointMarker currentWaypoint = null;
+    [SerializeField] Animator animator;
     int currentIndex = 0;
 
     NavMeshAgent agent;
@@ -16,7 +17,6 @@ public class FollowWaypoints : MonoBehaviour, IDieOff
     float timer = 0;
     private void Start()
     {
-        GlobalEvents.Instance.alarmRaised?.AddListener(Shutdown);
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -33,6 +33,7 @@ public class FollowWaypoints : MonoBehaviour, IDieOff
 
         if (agent.remainingDistance == 0)
         {
+            animator.SetBool("Walking", false);
             agent.updateRotation = false;
             transform.rotation = Quaternion.Slerp(transform.rotation, currentWaypoint.transform.rotation, 0.025f);
             timer += Time.deltaTime;
@@ -44,7 +45,10 @@ public class FollowWaypoints : MonoBehaviour, IDieOff
             }
         }
         else
+        {
             agent.updateRotation = true;
+            animator.SetBool("Walking", true);
+        }
     }
 
     private void WalkTo(WaypointMarker waypoint, WaypointMarker oldWaypoint = null)
@@ -60,6 +64,8 @@ public class FollowWaypoints : MonoBehaviour, IDieOff
 
     public void Shutdown()
     {
+        animator.SetBool("Walking", false);
+        agent.ResetPath();
         agent.updateRotation = true;
         this.enabled = false;
     }

@@ -20,7 +20,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
     protected RectTransform alertRect;
     protected Canvas alertCanvas;
 
-    protected GenericHealthScript GHS = null;
+    protected HealthScriptParent GHS = null;
     protected void Start()
     {
         alertText = GetComponentInChildren<TextMeshProUGUI>();
@@ -28,9 +28,9 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
         alertCanvas = alertText.transform.parent.GetComponent<Canvas>();
         GlobalEvents.Instance.alarmRaised?.AddListener(AlarmRaised);
 
-        GHS = GetComponent<GenericHealthScript>();
+        GHS = GetComponent<HealthScriptParent>();
         if (GHS != null)
-            GetComponent<GenericHealthScript>().hurtEvent.AddListener(Hurt);
+            GetComponent<HealthScriptParent>().hurtEvent.AddListener(Hurt);
     }
     protected virtual void Update()
     {
@@ -49,12 +49,15 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
                     if (Vector3.Angle(transform.forward,(collider.transform.position - transform.position)) < fov)
                     {
                         if (Physics.Raycast(transform.position, (collider.transform.position - transform.position), out RaycastHit hit, radius) && hit.collider.gameObject == collider.gameObject)
+                        {
                             foundCandidate = si;
+                            distance = hit.distance;
+                        }
                     }
                 }
             }
             if (foundCandidate != null)
-                alertLvl = Mathf.Clamp(detectionSpeed + alertLvl, 0, 100);
+                alertLvl = Mathf.Clamp((detectionSpeed/distance) + alertLvl, 0, 100);
             else
                 alertLvl = Mathf.Clamp(alertLvl - detectionSpeed * 0.5f, 0, 100);
         }
@@ -78,7 +81,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
 
     protected void Hurt()
     {
-        GetComponent<GenericHealthScript>().hurtEvent.RemoveListener(Hurt);
+        GetComponent<HealthScriptParent>().hurtEvent.RemoveListener(Hurt);
         alertLvl = 9001;
         alertCanvas.enabled = true;
         alertText.text = "!";
@@ -89,7 +92,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
     public void Shutdown()
     {
         if (GHS != null)
-            GetComponent<GenericHealthScript>().hurtEvent.RemoveListener(Hurt);
+            GetComponent<HealthScriptParent>().hurtEvent.RemoveListener(Hurt);
         alertText.enabled = false;
         active = false;
         this.enabled = false;

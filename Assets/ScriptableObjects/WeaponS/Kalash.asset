@@ -16,7 +16,9 @@ MonoBehaviour:
   BulletForce: 40
   Damage: 1
   FireRate: 0.1
+  FullAuto: 1
   MaxAmmo: 20
+  Spread: 0.01
+  Burst: 1
   Prefab: {fileID: 1017932420484357172, guid: a7d41ba81b18351409fde088df0f378b, type: 3}
-  AnimatorOverrideController: {fileID: 22100000, guid: 459ab70f53b99db41a4460febe93ed5e,
-    type: 2}
+  AnimatorController: {fileID: 9100000, guid: f68d760b5d925b84aa7211023b107eea, type: 2}
