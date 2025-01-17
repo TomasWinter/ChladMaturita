@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon",menuName = "ScriptableObjects/Weapon")]
@@ -15,5 +12,5 @@ public class WeaponSO : ScriptableObject
     public float Spread = 0;
     public int Burst = 1;
     public GameObject Prefab;
-    public AnimatorController AnimatorController;
+    public RuntimeAnimatorController AnimatorController;
 }

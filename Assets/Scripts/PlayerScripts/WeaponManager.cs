@@ -33,8 +33,8 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
 
     private void Start()
     {
-        primary = PlayerDataSingleton.PrimaryW;
-        secondary = PlayerDataSingleton.SecondaryW;
+        primary = PlayerEquipmentData.PrimaryW;
+        secondary = PlayerEquipmentData.SecondaryW;
         animator = GetComponent<Animator>();
         susIndicator = GetComponent<SusIndicator>();
     }

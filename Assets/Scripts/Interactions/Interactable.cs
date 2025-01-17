@@ -32,8 +32,8 @@ public class Interactable : MonoBehaviour
         IsEnabled = false;
         InteractedEvent?.Invoke();
     }
-    public virtual void Activate()
+    public virtual void Activate(bool b = true)
     {
-        IsEnabled = true;
+        IsEnabled = b;
     }
 }

@@ -23,7 +23,11 @@ public class GlobalVals : MonoBehaviour
     private void Awake()
     {
         WaypointTypeDictionary = new Dictionary<WaypointType, Sprite>() {
-            { WaypointType.Arrow, Resources.Load<Sprite>("Waypoints/Waypoint") }
+            { WaypointType.Interact, Resources.Load<Sprite>("Waypoints/Interaction") },
+            { WaypointType.Target, Resources.Load<Sprite>("Waypoints/Target") },
+            { WaypointType.Walk, Resources.Load<Sprite>("Waypoints/Walk") },
+            { WaypointType.Arrow, Resources.Load<Sprite>("Waypoints/Waypoint") },
+            { WaypointType.Secure, Resources.Load<Sprite>("Waypoints/SecurePoint") }
         };
 
         Instance = this;

@@ -8,6 +8,7 @@ public class BagInfo
         new(LootType.BlobbyMeal,100,2,"BlobbyMeal"),
         new(LootType.Hamburger,50,1.5f,"Hamburger"),
         new(LootType.Air,0,1,"Air"),
+        new(LootType.Server,150,2.2f,"Server"),
         new(LootType.Body,-1,1.5f,"x-x")
     };
 
@@ -35,5 +36,6 @@ public enum LootType
     Body,
     BlobbyMeal,
     Hamburger,
-    Air
+    Air,
+    Server
 }

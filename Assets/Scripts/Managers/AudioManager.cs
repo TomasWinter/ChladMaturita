@@ -59,4 +59,14 @@ public static class AudioManager
 
         return audioSource;
     }
+
+    public static void Play(Vector3 position, AudioClip audio, float distance = float.MaxValue, float volume = 1f, float pitch = 1f)
+    {
+        GameObject source = new GameObject();
+        source.transform.position = position;
+        AudioSource audioSource = PrepareSource(source, audio, distance, volume, pitch);
+        audioSource.Play();
+
+        MonoBehaviour.Destroy(source, audio.length / audioSource.pitch);
+    }
 }

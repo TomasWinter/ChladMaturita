@@ -16,7 +16,7 @@ public abstract class HealthScriptParent : MonoBehaviour
     {
         health = maxHealth;
     }
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage,object sender = null)
     {
         health -= damage;
         hurtEvent?.Invoke();

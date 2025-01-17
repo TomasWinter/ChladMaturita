@@ -20,7 +20,7 @@ public class BillboardingScript : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(x, Vector3.up);
         if (scale)
         {
-            transform.localScale = (new Vector3(1,1,0) * (transform.position - followTransform.position).magnitude / 300 + new Vector3(0, 0, 0.1f)) * bigger;
+            transform.localScale = (new Vector3(1,1,1) * (transform.position - followTransform.position).magnitude / 300 + new Vector3(0, 0, 0.1f)) * bigger;
         }
     }
 }

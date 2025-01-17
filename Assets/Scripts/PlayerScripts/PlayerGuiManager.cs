@@ -90,8 +90,9 @@ public class PlayerGuiManager : MonoBehaviour
         }
         else if (instant)
         {
-            objectiveGui.sizeDelta = new(txt.Length * 12.5f + 30, objectiveGui.sizeDelta.y);
             objectiveText.text = txt;
+            objectiveText.ForceMeshUpdate();
+            objectiveGui.sizeDelta = new(objectiveText.GetRenderedValues(false).x+50, objectiveGui.sizeDelta.y);
             objectiveText.color = new Color(1, 1, 1, 1);
         }
         else
@@ -110,8 +111,9 @@ public class PlayerGuiManager : MonoBehaviour
             objectiveText.color -= new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.01f);
         }
-        objectiveGui.sizeDelta = new(txt.Length * 12.5f + 30, objectiveGui.sizeDelta.y);
         objectiveText.text = txt;
+        objectiveText.ForceMeshUpdate();
+        objectiveGui.sizeDelta = new(objectiveText.GetRenderedValues(false).x+50, objectiveGui.sizeDelta.y);
         objectiveText.color = new(1,1,1,0);
         for (int i = 0; i < 100; i++)
         {
@@ -138,13 +140,13 @@ public class PlayerGuiManager : MonoBehaviour
         if (bag != null)
         {
             bagText.text = bag.Name;
-            bagBackground.color = new(0.1176f, 0.1569f, 1.0f);
+            bagBackground.color = new(0.1176f, 0.1569f, 1.0f,bagBackground.color.a);
             StartCoroutine(AnimateBag(true));
         }
         else
         {
             bagText.text = "";
-            bagBackground.color = new(0.1020f, 0.1216f, 0.5569f);
+            bagBackground.color = new(0.1020f, 0.1216f, 0.5569f, bagBackground.color.a);
             StartCoroutine(AnimateBag(false));
         }
     }
@@ -200,5 +202,12 @@ public class PlayerGuiManager : MonoBehaviour
             if (securedCounter != s)
                 yield break;
         }
+    }
+
+    //ShowResults
+    public void ShowResults(bool success,string txt = null)
+    {
+        gameObject.SetActive(false);
+        MissionOverScript.Instance.Show(success);
     }
 }

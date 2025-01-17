@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Loot : Interactable
 {
     [SerializeField] protected LootType type = LootType.Air;
     protected BagInfo Info;
 
+    public UnityEvent LootedEvent;
     protected virtual void Start()
     {
         Info = BagInfo.GetInfo(type);
@@ -15,6 +17,7 @@ public class Loot : Interactable
     {
         if (BagManager.Instance.SetBag(Info))
         {
+            LootedEvent?.Invoke();
             base.Interacted(b);
             StartCoroutine(die());
         }
@@ -26,14 +29,4 @@ public class Loot : Interactable
         Destroy(gameObject);
     }
 
-    /*public bool SetInfo(BagInfo bagInfo)
-    {
-        if (Info == null)
-        {
-            Info = bagInfo;
-            GetComponent<Rigidbody>().mass = Info.Weight;
-            return true;
-        }
-        return false;
-    }*/
 }

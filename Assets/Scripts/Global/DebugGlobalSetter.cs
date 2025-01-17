@@ -8,7 +8,8 @@ public class DebugGlobalSetter : MonoBehaviour
     [SerializeField] WeaponSO PdsSecondary;
     private void Awake()
     {
-        PlayerDataSingleton.PrimaryW = PdsPrimary;
-        PlayerDataSingleton.SecondaryW = PdsSecondary;
+        Debug.LogWarning("You are setting the loadout using a debug script");
+        PlayerEquipmentData.PrimaryW = PdsPrimary;
+        PlayerEquipmentData.SecondaryW = PdsSecondary;
     }
 }

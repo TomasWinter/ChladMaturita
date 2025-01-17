@@ -11,7 +11,7 @@ public class BulldozerHealth : HealthScriptParent
     {
         helmet.dieEvent?.AddListener(() => isHelmet = false);
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, object sender = null)
     {
         if (isHelmet)
             health -= damage/10;

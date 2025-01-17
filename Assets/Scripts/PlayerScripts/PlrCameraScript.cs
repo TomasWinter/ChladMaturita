@@ -11,7 +11,6 @@ public class PlrCameraScript : MonoBehaviour
 
     Vector3 camPos = Vector3.zero;
     Vector3 camPosOffset = Vector3.zero;
-    [SerializeField] float sensitivity = 1;
     [SerializeField] float bobSpeed = 1;
     [Range(0.001f,0.1f)] [SerializeField] float bobIntensity = 1;
     [SerializeField] float smoothing = 10;
@@ -32,8 +31,8 @@ public class PlrCameraScript : MonoBehaviour
         float moveBobModifier = (float)PlrMovementScript.Instance.MoveState;
 
         //Otáèení kamery podle myši
-        camY += Input.GetAxis("Mouse X") * Time.deltaTime * 1000 * sensitivity;
-        camX -= Input.GetAxis("Mouse Y") * Time.deltaTime * 1000 * sensitivity;
+        camY += Input.GetAxis("Mouse X") * Time.deltaTime * 1000 * Settings.Instance.Sensitivity;
+        camX -= Input.GetAxis("Mouse Y") * Time.deltaTime * 1000 * Settings.Instance.Sensitivity;
         camX = Mathf.Clamp(camX, -90, 90); //Omezení rotace
 
         //Aplikování rotace

@@ -12,9 +12,16 @@ public class LevelManager : MonoBehaviour
     public int Payout { get; private set; } = 0;
     public int RemainingPagers {  get; private set; } = 4;
 
+    public float Timer { get; private set; } = 0;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        Timer += Time.deltaTime;
     }
 
     public void SecureLoot(int x)

@@ -28,7 +28,7 @@ public class PlayerHealth : HealthScriptParent
         PlayerGuiManager.Instance.ChangeHealth(health, maxHealth);
         PlayerGuiManager.Instance.ChangeArmor(armorHealth, maxArmorHealth);
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, object sender = null)
     {
         timer = 0;
         if (armorHealth > 0)
@@ -45,6 +45,12 @@ public class PlayerHealth : HealthScriptParent
         hurtEvent?.Invoke();
         if (health <= 0)
             Die();
+    }
+
+    protected override void Die()
+    {
+        dieEvent?.Invoke();
+        PlayerGuiManager.Instance.ShowResults(false);
     }
 
     private void RegenArmor()

@@ -48,7 +48,7 @@ public class BulletScript : MonoBehaviour
         {
             HealthScriptParent healthScript = collision.transform.GetComponent<HealthScriptParent>();
             if (healthScript != null)
-                healthScript.TakeDamage(damage);
+                healthScript.TakeDamage(damage,collision);
 
             GameObject splat = GlobalVals.Instance.Splat;
             Vector3 normal = collision.contacts[0].normal;

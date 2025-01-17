@@ -19,5 +19,6 @@ public enum WaypointType
     Interact,
     Target,
     Walk,
-    Arrow
+    Arrow,
+    Secure
 }
