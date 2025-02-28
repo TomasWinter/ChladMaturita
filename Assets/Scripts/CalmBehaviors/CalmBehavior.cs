@@ -29,8 +29,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
         GlobalEvents.Instance.alarmRaised?.AddListener(AlarmRaised);
 
         GHS = GetComponent<HealthScriptParent>();
-        if (GHS != null)
-            GetComponent<HealthScriptParent>().hurtEvent.AddListener(Hurt);
+        GHS?.hurtEvent?.AddListener(Hurt);
     }
     protected virtual void Update()
     {
@@ -81,7 +80,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
 
     protected void Hurt()
     {
-        GetComponent<HealthScriptParent>().hurtEvent.RemoveListener(Hurt);
+        GHS?.hurtEvent?.RemoveListener(Hurt);
         alertLvl = 9001;
         alertCanvas.enabled = true;
         alertText.text = "!";
@@ -91,8 +90,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
 
     public void Shutdown()
     {
-        if (GHS != null)
-            GetComponent<HealthScriptParent>().hurtEvent.RemoveListener(Hurt);
+        GHS?.hurtEvent?.RemoveListener(Hurt);
         alertText.enabled = false;
         active = false;
         this.enabled = false;

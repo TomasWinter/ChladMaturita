@@ -30,10 +30,10 @@ public class ButtonScript : MonoBehaviour
         }
         Highlighted.Add(tmp, true);
         float original = tmp.fontSize;
-        for (int i = 0;i < biggerAmount / 0.1f && Highlighted[tmp];i++)
+        for (int i = 0;i < biggerAmount / 1f && Highlighted[tmp];i++)
         {
-            tmp.fontSize += 0.1f;
-            yield return new WaitForSeconds(0.001f);
+            tmp.fontSize += 1f;
+            yield return new WaitForSeconds(0.01f);
         }
         tmp.fontSize = original + biggerAmount;
         Highlighted.Remove(tmp);
@@ -54,10 +54,10 @@ public class ButtonScript : MonoBehaviour
         }
         Highlighted.Add(tmp, true);
         float original = tmp.fontSize;
-        for (int i = 0; i < biggerAmount / 0.1f && Highlighted[tmp]; i++)
+        for (int i = 0; i < biggerAmount / 1f && Highlighted[tmp]; i++)
         {
-            tmp.fontSize -= 0.1f;
-            yield return new WaitForSeconds(0.001f);
+            tmp.fontSize -= 1f;
+            yield return new WaitForSeconds(0.01f);
         }
         tmp.fontSize = original - biggerAmount;
         Highlighted.Remove(tmp);

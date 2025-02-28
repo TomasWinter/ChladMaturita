@@ -48,21 +48,21 @@ public abstract class EnemyBehavior : MonoBehaviour
         if (Physics.Raycast(transform.position, targetDir, out RaycastHit hit, maxDistance))
         {
             if (distance < minDistance)
-            {
+            {//Ústup
                 walkAnimator.SetBool("Walking",true);
                 agent.ResetPath();
                 LookAtTarget(targetDir);
                 rigidBody.AddForce(-transform.forward * walkSpeed);
             }
             else if (distance < standDistance && hit.collider.gameObject == target)
-            {
+            {//Stání
                 walkAnimator.SetBool("Walking", false);
                 agent.ResetPath();
                 LookAtTarget(targetDir);
                 Attack();
             }
             else if (distance < maxDistance && hit.collider.gameObject == target)
-            {
+            {//Chùze
                 walkAnimator.speed = 1;
                 walkAnimator.SetBool("Walking", true);
                 LookAtTarget(targetDir);
@@ -71,7 +71,7 @@ public abstract class EnemyBehavior : MonoBehaviour
                 agent.speed = walkSpeed;
             }
             else
-            {
+            {//Bìh
                 walkAnimator.speed = 2;
                 walkAnimator.SetBool("Walking", true);
                 agent.SetDestination(target.transform.position);
@@ -79,7 +79,7 @@ public abstract class EnemyBehavior : MonoBehaviour
             }
         }
         else
-        {
+        {//Bìh
             walkAnimator.speed = 2;
             walkAnimator.SetBool("Walking", true);
             agent.SetDestination(target.transform.position);

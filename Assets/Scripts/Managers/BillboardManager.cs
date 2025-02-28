@@ -38,17 +38,3 @@ public static class BillboardManager
         MonoBehaviour.Destroy(obj);
     }
 }
-
-/*
-        GameObject w = Object.Instantiate(GlobalVals.Instance.WaypointPrefab);
-        SpriteRenderer SR = w.GetComponent<SpriteRenderer>();
-        SR.sprite = GlobalVals.WaypointTypeDictionary[waypointInfo.Type];
-        SR.color = waypointInfo.WaypointColor;
-
-        w.transform.position = waypointInfo.Parent.position;
-        if (waypointInfo.Sticky)
-        {
-            w.transform.parent = waypointInfo.Parent;
-        }
-        return w;
-*/

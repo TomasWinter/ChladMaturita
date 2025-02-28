@@ -16,7 +16,7 @@ public class PlayerWeaponInputRelay : MonoBehaviour
             gunScript.Shoot(true);
         else if (Input.GetKey(KeyCode.Mouse0))
             gunScript.Shoot(false);
-        else if (Input.GetKey(KeyCode.R))
+        else if (Input.GetKey(Settings.Keybinds.Reload))
             gunScript.Reload();
     }
 }

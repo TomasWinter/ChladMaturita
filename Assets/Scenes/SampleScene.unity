@@ -4259,7 +4259,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &486903558658042063
@@ -5307,6 +5307,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   type: 2
+  LootedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &8930527302296948758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688237001321970832, guid: 60807678907a0c74db034b048a9abf34,

@@ -23,7 +23,7 @@ public class InteractionManager : MonoBehaviour
         if (!forceStay)
         {
             Interactable interactable;
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distance) && (interactable = hit.collider.GetComponent<Interactable>()) != null)
+            if (Physics.Raycast(transform.parent.position + new Vector3(0,0.5f,0), transform.forward, out RaycastHit hit, distance) && (interactable = hit.collider.GetComponent<Interactable>()) != null)
             {
                 if (currentInteractable != interactable && interactable.IsEnabled)
                 {
@@ -40,7 +40,7 @@ public class InteractionManager : MonoBehaviour
         else if (currentInteractable != null && !currentInteractable.IsEnabled)
             ExitInteract();
 
-        if (currentInteractable != null && Input.GetKey(Settings.Instance.Keybinds.Interact) && currentInteractable.IsEnabled)
+        if (currentInteractable != null && Input.GetKey(Settings.Keybinds.Interact) && currentInteractable.IsEnabled)
         {
             if (currentTime == 0)
                 currentInteractable.IsInteracting(true);
@@ -69,7 +69,7 @@ public class InteractionManager : MonoBehaviour
 
         string GuiText = (i.InteractionTime > 0 ? "Hold" : "Press") + " # to " + i.InteractionText;
 
-        PlayerGuiManager.Instance.DisplayInteract(true, GuiText, Settings.Instance.Keybinds.Interact);
+        PlayerGuiManager.Instance.DisplayInteract(true, GuiText, Settings.Keybinds.Interact);
     }
 
     private void HideGui()

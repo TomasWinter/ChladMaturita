@@ -9,7 +9,9 @@ public class DebugGlobalSetter : MonoBehaviour
     private void Awake()
     {
         Debug.LogWarning("You are setting the loadout using a debug script");
-        PlayerEquipmentData.PrimaryW = PdsPrimary;
-        PlayerEquipmentData.SecondaryW = PdsSecondary;
+        if (PlayerEquipmentData.PrimaryW == null || PlayerEquipmentData.SecondaryW == null)
+        {
+            PlayerEquipmentData.SetWeapons(PdsPrimary, PdsSecondary);
+        }
     }
 }

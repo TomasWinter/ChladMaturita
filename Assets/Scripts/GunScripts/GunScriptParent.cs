@@ -54,6 +54,16 @@ public abstract class GunScriptParent : MonoBehaviour,IAnimationReactor
         AudioManager.Play(gameObject, shotAudio, 20f, 1f, AudioManager.RandomPitch(0.1f));
     }
 
+    protected void SpawnBullet(Color? c = null)
+    {
+        GameObject bullet = Instantiate(GlobalVals.Instance.Bullet, bulletSpawn.position, bulletSpawn.rotation, GlobalVals.Instance.BulletParent.transform);
+        bullet.GetComponent<BulletScript>().Constructor(scriptableObject.Damage, owner, null, c);
+
+        Rigidbody brb = bullet.GetComponent<Rigidbody>();
+        Vector3 rndVector = new Vector3(Random.Range(-scriptableObject.Spread, scriptableObject.Spread), Random.Range(-scriptableObject.Spread, scriptableObject.Spread), 1);
+        brb.AddRelativeForce(rndVector * scriptableObject.BulletForce, ForceMode.VelocityChange);
+    }
+
     public void Reload()
     {
         if (timer <= 0 && !reloading)

@@ -31,6 +31,9 @@ public class PlayerGuiManager : MonoBehaviour
     [Header("Secured")]
     [SerializeField] RectTransform securedTransform;
     [SerializeField] TextMeshProUGUI securedText;
+    [Header("Equipment")]
+    [SerializeField] Image equipmentImage;
+    [SerializeField] TextMeshProUGUI equipmentText;
 
     int securedCounter = 0;
 
@@ -64,6 +67,12 @@ public class PlayerGuiManager : MonoBehaviour
     {
         ammoText.text = ammo.ToString("000");
         maxAmmoText.text = maxAmmo.ToString("000");
+    }
+    //Equipment
+    public void ChangeEquipment(int uses, Sprite img = null)
+    {
+        equipmentText.text = uses.ToString("000");
+        equipmentImage.sprite = img ?? equipmentImage.sprite;
     }
     //Objectives
     public void ChangeObjective(ObjectiveParent op,bool instant = false)
@@ -140,13 +149,13 @@ public class PlayerGuiManager : MonoBehaviour
         if (bag != null)
         {
             bagText.text = bag.Name;
-            bagBackground.color = new(0.1176f, 0.1569f, 1.0f,bagBackground.color.a);
+            bagBackground.color = new(0.1176f, 0.1569f, 1.0f, 1f);
             StartCoroutine(AnimateBag(true));
         }
         else
         {
             bagText.text = "";
-            bagBackground.color = new(0.1020f, 0.1216f, 0.5569f, bagBackground.color.a);
+            bagBackground.color = new(0.1020f, 0.1216f, 0.5569f, 0f);
             StartCoroutine(AnimateBag(false));
         }
     }

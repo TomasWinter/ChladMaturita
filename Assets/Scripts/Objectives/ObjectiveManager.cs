@@ -18,9 +18,12 @@ public class ObjectiveManager : MonoBehaviour
         {
             Objectives.Add(ObjectiveFactory.Assemble(template));
         }
-
-        PlayerGuiManager.Instance.ChangeObjective(Objectives[currentObj],true);
-        Objectives[currentObj].Initiate(ObjCompleted);
+        if (Objectives.Count > 0)
+        {
+            PlayerGuiManager.Instance.ChangeObjective(Objectives[currentObj], true);
+            Objectives[currentObj].Initiate(ObjCompleted);
+        }
+        
     }
 
     public void ObjCompleted()

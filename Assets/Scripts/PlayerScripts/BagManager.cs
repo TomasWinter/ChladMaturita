@@ -19,7 +19,7 @@ public class BagManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentBag != null && Input.GetKeyDown(Settings.Instance.Keybinds.ThrowBag))
+        if (currentBag != null && Input.GetKeyDown(Settings.Keybinds.ThrowBag))
         {
             GameObject bag = Instantiate(bagPrefab,transform.position,transform.rotation);
             bag.GetComponent<LootBag>().SetInfo(currentBag);

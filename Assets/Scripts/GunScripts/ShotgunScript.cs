@@ -6,30 +6,14 @@ public class ShotgunScript : GunScriptParent
 {
     protected override void PrivShoot()
     {
-        Ammo--;
-        animator.SetBool("OAmmo", Ammo <= 0);
-        AmmoGuiChange();
-        animator.SetTrigger("Shoot");
-        AudioManager.Play(gameObject, shotAudio, 30f, 1f, AudioManager.RandomPitch(0.1f)-0.5f);
+        animator.SetBool("OAmmo", Ammo - 1 <= 0);
+        base.PrivShoot();
 
-        Color? c = null;
+        Color c = new Color(Random.Range(0.1f, 1), Random.Range(0.1f, 1), Random.Range(0.1f, 1)); ;
         for (int i = 0;i < scriptableObject.Burst;i++)
         {
-            c = ShotgunShoot(c);
+            SpawnBullet(c);
         }
-    }
-
-    private Color ShotgunShoot(Color? c = null)
-    {
-        GameObject bullet = Instantiate(GlobalVals.Instance.Bullet, bulletSpawn.position, bulletSpawn.rotation * Quaternion.Euler(0, -90, 0), GlobalVals.Instance.BulletParent.transform);
-        BulletScript bs = bullet.GetComponent<BulletScript>();
-        bs.Constructor(scriptableObject.Damage,owner,null,c);
-
-        Rigidbody brb = bullet.GetComponent<Rigidbody>();
-        Vector3 rndVector = new Vector3(Random.Range(-scriptableObject.Spread, scriptableObject.Spread), Random.Range(-scriptableObject.Spread, scriptableObject.Spread),1);
-        brb.AddRelativeForce(rndVector * scriptableObject.BulletForce, ForceMode.VelocityChange);
-
-        return (Color)bs.color;
     }
 
     protected override IEnumerator PrivReload()

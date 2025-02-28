@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class CoolExtensions
+public static class ListRandomiser
 {
     public static GameObjectProbability GetRandom(this List<GameObjectProbability> x)
     {
@@ -29,7 +29,6 @@ public static class CoolExtensions
         {
             if (prob > randomSelected)
             {
-                //Debug.Log($"Total:{totalProbability}; Selected:{randomSelected}; i:{i}");
                 return x[i];
             }
             i++;

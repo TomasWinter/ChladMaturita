@@ -18,8 +18,11 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
 
     WeaponSO primary;
     WeaponSO secondary;
-    byte current = 0;
+    int current = 0;
     GameObject CurrentGO = null;
+
+    EquipmentSO equipment;
+    int uses = 0;
 
     SusIndicator susIndicator;
 
@@ -35,19 +38,35 @@ public class WeaponManager : MonoBehaviour,IAnimationReactor
     {
         primary = PlayerEquipmentData.PrimaryW;
         secondary = PlayerEquipmentData.SecondaryW;
+        equipment = PlayerEquipmentData.Equipment;
+        uses = equipment.Uses;
+
         animator = GetComponent<Animator>();
         susIndicator = GetComponent<SusIndicator>();
+
+        PlayerGuiManager.Instance?.ChangeEquipment(equipment.Uses, equipment.EquipmentImage);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && active && current != 1)
+        if (Input.GetKeyDown(Settings.Keybinds.Weapon1) && active && current != 1)
             StartCoroutine(Equip(primary, 1));
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && active && current != 2)
+        else if (Input.GetKeyDown(Settings.Keybinds.Weapon2) && active && current != 2)
             StartCoroutine(Equip(secondary, 2));
-        else if (Input.GetKeyDown(KeyCode.H) && active && current != 0)
+        else if (Input.GetKeyDown(Settings.Keybinds.HideWeapon) && active && current != 0)
             StartCoroutine(Unequip());
-            
+        else if (Input.GetKeyDown(Settings.Keybinds.Equipment) && active && uses > 0)
+            DeployEquipemnt();
+    }
+
+    private void DeployEquipemnt()
+    {
+        if (Physics.Raycast(PlrCameraScript.Instance.transform.position, PlrCameraScript.Instance.transform.forward, out RaycastHit hit, 5))
+        {
+            uses--;
+            Instantiate(equipment.Prefab,hit.point + new Vector3(0,0.25f,0),Quaternion.identity);
+            PlayerGuiManager.Instance?.ChangeEquipment(uses);
+        }
     }
 
     private IEnumerator Equip(WeaponSO x,byte b)

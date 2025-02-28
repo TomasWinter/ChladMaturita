@@ -22,3 +22,4 @@ MonoBehaviour:
   Burst: 1
   Prefab: {fileID: 995476432141785005, guid: ce402f1b628777240b5d0ffa3447af13, type: 3}
   AnimatorController: {fileID: 9100000, guid: 8fe6a481b08f0ea47a91c1b4ce54b3db, type: 2}
+  GunImage: {fileID: 21300000, guid: 458cfd9415c62d042be6d459587fc62d, type: 3}

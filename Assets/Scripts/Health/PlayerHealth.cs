@@ -47,6 +47,12 @@ public class PlayerHealth : HealthScriptParent
             Die();
     }
 
+    public void Heal()
+    {
+        health = maxHealth;
+        PlayerGuiManager.Instance.ChangeHealth(health, maxHealth);
+    }
+
     protected override void Die()
     {
         dieEvent?.Invoke();

@@ -37,15 +37,15 @@ public class PlrMovementScript : MonoBehaviour
         bool sprinting = false;
 
         //Dopøedu, dozadu
-        if (Input.GetKey(Settings.Instance.Keybinds.Forward))
+        if (Input.GetKey(Settings.Keybinds.Forward))
             dir.z = 1;
-        else if (Input.GetKey(Settings.Instance.Keybinds.Backward))
+        else if (Input.GetKey(Settings.Keybinds.Backward))
             dir.z = -1;
 
         //Doleva, doprava
-        if (Input.GetKey(Settings.Instance.Keybinds.Right))
+        if (Input.GetKey(Settings.Keybinds.Right))
             dir.x = 1;
-        else if (Input.GetKey(Settings.Instance.Keybinds.Left))
+        else if (Input.GetKey(Settings.Keybinds.Left))
             dir.x = -1;
 
         if (Input.GetKey(KeyCode.LeftShift)) //Sprint
