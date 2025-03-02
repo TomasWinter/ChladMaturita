@@ -9,6 +9,7 @@ public class GlobalEvents : MonoBehaviour
 
     public UnityEvent enemyEliminated;
     public UnityEvent alarmRaised;
+    public UnityEvent lootPickedUp;
 
     private void Awake()
     {

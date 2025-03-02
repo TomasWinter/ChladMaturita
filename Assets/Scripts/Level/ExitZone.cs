@@ -8,15 +8,11 @@ public class ExitZone : MonoBehaviour
     bool isActive = false;
     float timer = 0;
 
-    [SerializeField] GameObject Waypoint = null;
-
     public UnityEvent Escaped;
 
     private void Start()
     {
         gameObject.SetActive(isActive);
-        if (Waypoint != null)
-            Waypoint.SetActive(isActive);
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,7 +32,5 @@ public class ExitZone : MonoBehaviour
     {
         isActive = b;
         gameObject.SetActive(b);
-        if (Waypoint != null)
-            Waypoint.SetActive(b);
     }
 }

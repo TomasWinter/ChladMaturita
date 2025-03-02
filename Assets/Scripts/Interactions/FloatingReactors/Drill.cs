@@ -9,6 +9,8 @@ public class Drill : MonoBehaviour
     [SerializeField] int Time = 30;
     [SerializeField] TextMeshPro TextMeshPro;
 
+    [SerializeField] AudioClip drillingSound;
+
     public UnityEvent DrillDoneEvent;
 
     SpriteRenderer SpriteRenderer;
@@ -25,6 +27,7 @@ public class Drill : MonoBehaviour
         TextMeshPro.enabled = true;
         SpriteRenderer.enabled = true;
         TextMeshPro.text = $"{Time}s";
+        AudioManager.PlayLoop(gameObject, drillingSound, 20,0.5f);
         StartCoroutine(DrillIt());
     }
 
@@ -35,6 +38,7 @@ public class Drill : MonoBehaviour
             TextMeshPro.text = $"{(Time-i):F1}s";
             yield return new WaitForSeconds(0.1f);
         }
+        AudioManager.StopLoop(gameObject);
         DrillDoneEvent?.Invoke();
         SpriteRenderer.enabled = false;
         TextMeshPro.enabled = false;

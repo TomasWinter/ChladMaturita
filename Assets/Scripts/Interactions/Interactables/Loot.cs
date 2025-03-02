@@ -18,6 +18,7 @@ public class Loot : Interactable
         if (BagManager.Instance.SetBag(Info))
         {
             LootedEvent?.Invoke();
+            GlobalEvents.Instance.lootPickedUp?.Invoke();
             base.Interacted(b);
             StartCoroutine(die());
         }
