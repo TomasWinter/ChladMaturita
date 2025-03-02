@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobSpeed: 2
-  bobIntensity: 0.0751
+  bobIntensity: 0.0252
   smoothing: 10
   link: {fileID: 4844851211838489173}
   plr: {fileID: 3246333756909578925}
@@ -874,7 +874,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9032426793888035676}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 90ad0ee627dea9349b5542d570b9e069, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 67108864

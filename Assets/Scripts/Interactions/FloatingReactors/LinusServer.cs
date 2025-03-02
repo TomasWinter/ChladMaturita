@@ -16,6 +16,8 @@ public class LinusServer : MonoBehaviour
     [SerializeField] string EndString = "server offline";
     [SerializeField] string[] RandomMessages;
 
+    [SerializeField] sbyte susLvl = 2;
+
     public UnityEvent FinishedEvent;
     private void Start()
     {
@@ -34,6 +36,8 @@ public class LinusServer : MonoBehaviour
 
     private IEnumerator HackIt()
     {
+        if (GetComponent<SusIndicator>() != null)
+            GetComponent<SusIndicator>().SusLvl = susLvl;
         canvas.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         yield return StartCoroutine(Type(CommandString));
@@ -72,6 +76,10 @@ public class LinusServer : MonoBehaviour
         yield return new WaitForSeconds(2);
         commandLine.text += "\nShutting down";
         yield return StartCoroutine(Type("...", 0.5f));
+
+        if (GetComponent<SusIndicator>() != null)
+            GetComponent<SusIndicator>().SusLvl = (sbyte)-susLvl;
+
         canvas.gameObject.SetActive(false);
     }
 

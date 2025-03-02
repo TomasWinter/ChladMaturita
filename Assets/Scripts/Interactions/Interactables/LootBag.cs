@@ -38,4 +38,12 @@ public class LootBag : Interactable
             StartCoroutine(die());
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 25 && GetComponent<Rigidbody>()?.velocity.magnitude > 0.1)
+        {
+            collision.gameObject.GetComponent<HealthScriptParent>()?.TakeDamage(1);
+        }
+    }
 }

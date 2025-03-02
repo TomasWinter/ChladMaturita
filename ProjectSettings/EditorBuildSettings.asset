@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Tutorial.unity
     guid: be324a3118ef0f84c99ed63ca10cd16d
+  - enabled: 1
+    path: Assets/Scenes/Levels/GasStation.unity
+    guid: 90f6c0f4965995247835513e46bd6f17
   m_configObjects: {}

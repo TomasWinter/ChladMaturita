@@ -15,7 +15,7 @@ public class EnemyHealth : HealthScriptParent
         if (StateManager.Instance?.State == WaveState.Stealth)
         {
             GameObject go = Instantiate(GlobalVals.Instance.Grave, transform.position, Quaternion.identity);
-            go.GetComponent<Grave>().SetPager(spawnPager);
+            go.GetComponent<Grave>()?.SetPager(spawnPager);
         }
 
         base.Die();

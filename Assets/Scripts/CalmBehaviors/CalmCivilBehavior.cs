@@ -16,7 +16,7 @@ public class CalmCivilBehavior : CalmBehavior
 
     protected override IEnumerator DetectedSomething()
     {
-        transform.GetComponent<FollowWaypoints>().Shutdown();
+        transform.GetComponent<FollowWaypoints>()?.Shutdown();
         yield return new WaitForSeconds(1);
         alertText.text = "ì";
         yield return new WaitForSeconds(3);
@@ -31,7 +31,7 @@ public class CalmCivilBehavior : CalmBehavior
 
     private void Flee()
     {
-        transform.GetComponent<FollowWaypoints>().Shutdown();
+        transform.GetComponent<FollowWaypoints>()?.Shutdown();
         agent.updateRotation = true;
         animator.SetBool("Walking", true);
         agent.SetDestination(ExitMarker.FindClosest(transform.position).transform.position);

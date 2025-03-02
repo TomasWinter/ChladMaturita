@@ -5,8 +5,9 @@ using UnityEngine;
 public class BagInfo
 {
     private static List<BagInfo> Instances = new List<BagInfo>(){ 
-        new(LootType.BlobbyMeal,100,2,"BlobbyMeal"),
-        new(LootType.Hamburger,50,1.5f,"Hamburger"),
+        new(LootType.McDrink,100,2,"McDrink"),
+        new(LootType.McBurg,50,1.5f,"McBurg"),
+        new(LootType.PerfectBaguette,50,1.5f,"Perfect Baguette"),
         new(LootType.Air,0,1,"Air"),
         new(LootType.Server,150,2.2f,"Server"),
         new(LootType.Body,-1,1.5f,"x-x")
@@ -34,8 +35,9 @@ public class BagInfo
 public enum LootType
 {
     Body,
-    BlobbyMeal,
-    Hamburger,
+    McDrink,
+    McBurg,
+    PerfectBaguette,
     Air,
     Server
 }

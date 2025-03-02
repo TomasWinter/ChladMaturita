@@ -11,6 +11,8 @@ public class SpawnPoint : MonoBehaviour
 
     [SerializeField] SpawnPoolSO spawnPool;
 
+    [SerializeField] List<Transform> spawnGroup;
+
     float timer = 0f;
 
     private void Start()
@@ -34,7 +36,20 @@ public class SpawnPoint : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject gameObject = spawnPool.fields.GetRandom().Prefab;
-        Instantiate(gameObject,transform.position,transform.rotation);
+        if (spawnGroup.Count > 0)
+        {
+            GameObject gameObject = spawnPool.fields.GetRandom().Prefab;
+            foreach (Transform t in spawnGroup)
+            {
+                Instantiate(gameObject, t.position, t.rotation);
+            }
+            
+        }
+        else
+        {
+            GameObject gameObject = spawnPool.fields.GetRandom().Prefab;
+            Instantiate(gameObject, transform.position, transform.rotation);
+        }
+        
     }
 }

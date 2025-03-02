@@ -50,9 +50,10 @@ public class FovEditor : Editor
         Handles.DrawWireDisc(targetTransform.position, new Vector3(0, 1, 0), radius);
 
         Handles.color = Color.yellow;
-        Handles.DrawLine(targetTransform.position, targetTransform.position + FovExtensions.Deg2Vec(angle,targetTransform.forward) * radius);
-        Handles.DrawLine(targetTransform.position, targetTransform.position + FovExtensions.Deg2Vec(-angle, targetTransform.forward) * radius);
-        RenderRealFov(angle,targetTransform,radius);
+        Vector3 pos = targetTransform.position + new Vector3(0,0.5f,0);
+        Handles.DrawLine(pos, pos + FovExtensions.Deg2Vec(angle,targetTransform.forward) * radius);
+        Handles.DrawLine(pos, pos + FovExtensions.Deg2Vec(-angle, targetTransform.forward) * radius);
+        //RenderRealFov(angle,targetTransform,radius);
     }
 
     private void RenderRealFov(float angle, Transform targetTransform, float radius)

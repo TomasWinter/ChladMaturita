@@ -12,7 +12,7 @@ public class CalmEnemyBehavior : CalmBehavior
 
     protected override IEnumerator DetectedSomething()
     {
-        transform.GetComponent<FollowWaypoints>().Shutdown();
+        transform.GetComponent<FollowWaypoints>()?.Shutdown();
         yield return new WaitForSeconds(1);
         GetComponent<EnemyBehavior>().enabled = true;
         alertText.text = "ì";
@@ -22,7 +22,7 @@ public class CalmEnemyBehavior : CalmBehavior
 
     public override void AlarmRaised()
     {
-        transform.GetComponent<FollowWaypoints>().Shutdown();
+        transform.GetComponent<FollowWaypoints>()?.Shutdown();
         GetComponent<EnemyBehavior>().enabled = true;
         Shutdown();
     }

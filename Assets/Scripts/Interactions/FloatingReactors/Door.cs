@@ -23,14 +23,14 @@ public class Door : MonoBehaviour
         obstacle = GetComponentInChildren<NavMeshObstacle>();
     }
 
-    public void Interacted(bool forward)
+    public void Interacted(bool forward = false)
     {
         if (enabled)
         {
             enabled = false;
             float desiredAngle = !closed ? 0 : (forward ? -angle : angle);
             closed = !closed;
-            obstacle.enabled = !closed;
+            obstacle.enabled = !closed || !npcsAllowed;
             StartCoroutine(Animate(desiredAngle));
             AudioManager.Play(gameObject, Squeak, 10, 0.5f, AudioManager.RandomPitch(0.1f));
         }

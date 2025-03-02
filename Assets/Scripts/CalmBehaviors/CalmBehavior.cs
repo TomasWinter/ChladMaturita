@@ -47,7 +47,7 @@ public abstract class CalmBehavior : MonoBehaviour, IDieOff
                 {
                     if (Vector3.Angle(transform.forward,(collider.transform.position - transform.position)) < fov)
                     {
-                        if (Physics.Raycast(transform.position, (collider.transform.position - transform.position), out RaycastHit hit, radius,~LayerMask.GetMask("Glass")) && hit.collider.gameObject == collider.gameObject)
+                        if (Physics.Raycast(transform.position + new Vector3(0,0.5f,0), collider.transform.position - (transform.position + new Vector3(0, 0.5f, 0)), out RaycastHit hit, radius,~LayerMask.GetMask("Glass")) && hit.collider.gameObject == collider.gameObject)
                         {
                             foundCandidate = si;
                             distance = hit.distance;

@@ -45,7 +45,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     {
         float distance = (gameObject.transform.position - target.transform.position).magnitude;
         Vector3 targetDir = new Vector3(target.transform.position.x, 0, target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-        if (Physics.Raycast(transform.position, targetDir, out RaycastHit hit, maxDistance))
+        if (Physics.Raycast(transform.position, targetDir, out RaycastHit hit, maxDistance,~LayerMask.GetMask("Glass")))
         {
             if (distance < minDistance)
             {//Ústup
