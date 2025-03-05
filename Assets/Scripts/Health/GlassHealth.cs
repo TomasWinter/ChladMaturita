@@ -26,7 +26,7 @@ public class GlassHealth : ObjectHealth
     {
         AudioManager.Play(transform.position, glassShattering, 20, 0.8f, 1f);
         GetComponent<Collider>().enabled = false;
-        Vector3 scale = new Vector3(transform.lossyScale.x, transform.lossyScale.y/ segments, transform.lossyScale.z / segments);
+        Vector3 scale = new Vector3(Mathf.Abs(transform.lossyScale.x), Mathf.Abs(transform.lossyScale.y) / segments, Mathf.Abs(transform.lossyScale.z) / segments);
         for (int z = -segments/2; z < segments/2;z++)
         {
             float posZ = scale.z * z + scale.z / 2;

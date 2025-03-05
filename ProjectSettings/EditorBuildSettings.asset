@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Transport.unity
     guid: b7076a245e021f04c83d123ac0a15330
+  - enabled: 1
+    path: Assets/Scenes/Levels/Restaurant.unity
+    guid: 2aa8276550ba0aa498a5fa72f1d3050c
   m_configObjects: {}

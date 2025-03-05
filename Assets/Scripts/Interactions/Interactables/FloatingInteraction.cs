@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FloatingInteraction : Interactable
@@ -40,6 +41,10 @@ public class FloatingInteraction : Interactable
             {
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, transparency);
             }
+            foreach (TextMeshPro tmp in transform.parent.GetComponentsInChildren<TextMeshPro>())
+            {
+                tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, transparency);
+            }
         }
     }
 
@@ -53,6 +58,10 @@ public class FloatingInteraction : Interactable
         foreach (SpriteRenderer sr in transform.parent.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, transparency);
+        }
+        foreach(TextMeshPro tmp in transform.parent.GetComponentsInChildren<TextMeshPro>())
+        {
+            tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, transparency);
         }
     }
 
