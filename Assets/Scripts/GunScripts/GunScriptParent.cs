@@ -8,6 +8,8 @@ public abstract class GunScriptParent : MonoBehaviour,IAnimationReactor
     public int Ammo { get; protected set; }
     protected Animator animator;
 
+    protected GameObject bulletPrefab = null;
+
     [SerializeField] protected Transform bulletSpawn;
     [Header("Audio")]
     [SerializeField] protected AudioClip shotAudio;
@@ -56,8 +58,8 @@ public abstract class GunScriptParent : MonoBehaviour,IAnimationReactor
 
     protected void SpawnBullet(Color? c = null)
     {
-        GameObject bullet = Instantiate(GlobalVals.Instance.Bullet, bulletSpawn.position, bulletSpawn.rotation, GlobalVals.Instance.BulletParent.transform);
-        bullet.GetComponent<BulletScript>().Constructor(scriptableObject.Damage, owner, null, c);
+        GameObject bullet = Instantiate(bulletPrefab ?? GlobalVals.Instance.Bullet, bulletSpawn.position, bulletSpawn.rotation, GlobalVals.Instance.BulletParent.transform);
+        bullet.GetComponent<BulletScript>()?.Constructor(scriptableObject.Damage, owner, null, c);
 
         Rigidbody brb = bullet.GetComponent<Rigidbody>();
         Vector3 rndVector = new Vector3(Random.Range(-scriptableObject.Spread, scriptableObject.Spread), Random.Range(-scriptableObject.Spread, scriptableObject.Spread), 1);
@@ -95,6 +97,7 @@ public abstract class GunScriptParent : MonoBehaviour,IAnimationReactor
 
     public virtual void OnWeaponAwake(WeaponSO _scriptableObject, int _ammo, Animator _animator, bool isUiChanger = false)
     {
+        bulletPrefab = _scriptableObject.BulletPrefab ?? null;
         uiChanger = isUiChanger;
         scriptableObject = _scriptableObject;
         animator = _animator;

@@ -23,7 +23,7 @@ public class ShutterDoor : MonoBehaviour
         for (float i = 0; i < 1; i += 0.01f)
         {
             yield return new WaitForSeconds(0.01f);
-            transform.localPosition = new Vector3(Anim.ElasticEaseOut(original, desired, i, 0.5f), 0,0);
+            transform.localPosition = new Vector3(Anim.ElasticOut(original, desired, i, 0.5f), 0,0);
 
         }
         transform.localPosition = new Vector3(desired,0,0);

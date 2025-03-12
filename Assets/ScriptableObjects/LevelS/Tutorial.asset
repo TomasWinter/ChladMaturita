@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   Scene: Tutorial
-  Description: Tutorial
-  Payout: 0
-  Image: {fileID: 21300000, guid: 251d92de72e45824ea595b932556e940, type: 3}
+  Description: Steal a server
+  Payout: 150
+  Image: {fileID: 21300000, guid: 9f3497ef5dfa0f14abd4c4c9a77e73cf, type: 3}

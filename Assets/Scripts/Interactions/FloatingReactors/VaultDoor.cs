@@ -50,7 +50,7 @@ public class VaultDoor : MonoBehaviour
         for (float i = 0; i < 1; i += 1/(100*openTime))
         {
             yield return new WaitForSeconds(0.01f);
-            transform.localRotation = Quaternion.Euler(Anim.ElasticEaseOut(original, angle, i, 0.5f), 0, 0);
+            transform.localRotation = Quaternion.Euler(Anim.ElasticOut(original, angle, i, 0.5f), 0, 0);
 
         }
         transform.localRotation = Quaternion.Euler(angle, 0, 0);

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GasStation
   m_EditorClassIdentifier: 
   Scene: GasStation
-  Description: Gas gas gas
-  Payout: 50
-  Image: {fileID: 21300000, guid: 33fc2fe2d64370e44872af4bac48d7d9, type: 3}
+  Description: Steal the perfect baguette
+  Payout: 250
+  Image: {fileID: 21300000, guid: 46486f89ee86b7e4cb825a75d6715604, type: 3}

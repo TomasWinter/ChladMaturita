@@ -33,7 +33,7 @@ public class ButtonScript : MonoBehaviour
         for (int i = 0;i < biggerAmount / 1f && Highlighted[tmp];i++)
         {
             tmp.fontSize += 1f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
         tmp.fontSize = original + biggerAmount;
         Highlighted.Remove(tmp);
@@ -57,7 +57,7 @@ public class ButtonScript : MonoBehaviour
         for (int i = 0; i < biggerAmount / 1f && Highlighted[tmp]; i++)
         {
             tmp.fontSize -= 1f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
         tmp.fontSize = original - biggerAmount;
         Highlighted.Remove(tmp);

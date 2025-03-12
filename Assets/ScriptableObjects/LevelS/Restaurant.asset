@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Restaurant
   m_EditorClassIdentifier: 
   Scene: Restaurant
-  Description: Rest a rant
-  Payout: 5000
-  Image: {fileID: 21300000, guid: de06bad2fa7902e4bbbb6d2c2ae5a902, type: 3}
+  Description: Rob a restaurant
+  Payout: 900
+  Image: {fileID: 21300000, guid: 3f293bb6a623adb49a8898315556f2b8, type: 3}

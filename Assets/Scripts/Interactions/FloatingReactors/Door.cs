@@ -42,7 +42,7 @@ public class Door : MonoBehaviour
         for (float i = 0;i < 1;i += 0.01f)
         {
             yield return new WaitForSeconds(0.01f);
-            transform.localRotation = Quaternion.Euler(Anim.ElasticEaseOut(original,desired, i,0.5f), 0, 0);
+            transform.localRotation = Quaternion.Euler(Anim.ElasticOut(original,desired, i,0.5f), 0, 0);
             
         }
         transform.localRotation = Quaternion.Euler(desired, 0, 0);

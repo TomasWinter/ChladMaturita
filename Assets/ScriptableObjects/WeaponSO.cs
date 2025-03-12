@@ -18,6 +18,8 @@ public class WeaponSO : ScriptableObject
     public GameObject Prefab;
     public RuntimeAnimatorController AnimatorController;
     public Sprite GunImage;
+    [Space]
+    public GameObject BulletPrefab = null;
 
     private void OnValidate()
     {
@@ -25,5 +27,7 @@ public class WeaponSO : ScriptableObject
         {
             ID = LastID++;
         }
+        if (BulletPrefab == null)
+            BulletPrefab = null;
     }
 }

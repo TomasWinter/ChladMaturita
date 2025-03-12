@@ -37,7 +37,7 @@ public class InteractionManager : MonoBehaviour
             else
                 ExitInteract();
         }
-        else if (currentInteractable != null && !currentInteractable.IsEnabled)
+        else if (currentInteractable != null && (!currentInteractable.IsEnabled || (currentInteractable.transform.position - transform.parent.position).magnitude > distance))
             ExitInteract();
 
         if (currentInteractable != null && Input.GetKey(Settings.Keybinds.Interact) && currentInteractable.IsEnabled)
@@ -85,6 +85,7 @@ public class InteractionManager : MonoBehaviour
         {
             currentInteractable.IsInteracting(false);
             forceStay = false;
+            currentTime = 0;
             currentInteractable.SetPointing(false);
             currentInteractable = null;
             HideGui();

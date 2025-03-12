@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scene: Transport
   Description: Ambush a convoy
-  Payout: 500
-  Image: {fileID: 21300000, guid: 3eddfdaa96d0e7a42b633b6900365f5a, type: 3}
+  Payout: 850
+  Image: {fileID: 21300000, guid: b351c41710ab74746b389de91b121268, type: 3}

@@ -12,11 +12,14 @@ public class PlayerWeaponInputRelay : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            gunScript.Shoot(true);
-        else if (Input.GetKey(KeyCode.Mouse0))
-            gunScript.Shoot(false);
-        else if (Input.GetKey(Settings.Keybinds.Reload))
-            gunScript.Reload();
+        if (Time.timeScale > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                gunScript.Shoot(true);
+            else if (Input.GetKey(KeyCode.Mouse0))
+                gunScript.Shoot(false);
+            else if (Input.GetKey(Settings.Keybinds.Reload))
+                gunScript.Reload();
+        }
     }
 }
