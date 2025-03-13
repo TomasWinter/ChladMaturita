@@ -8,9 +8,9 @@ public class SimpleObjective : ObjectiveParent
     {
         ue.AddListener(ObjectiveDone);
     }
-    public override void Initiate(UnityAction ua)
+    public override void Initiate()
     {
-        base.Initiate(ua);
+        base.Initiate();
     }
     protected override void ObjectiveDone()
     {

@@ -12,10 +12,10 @@ public class WaitObjective : ObjectiveParent
         time = ti;
     }
 
-    public override void Initiate(UnityAction ua)
+    public override void Initiate()
     {
         Countdown();
-        base.Initiate(ua);
+        base.Initiate();
     }
 
     protected async void Countdown()

@@ -19,11 +19,10 @@ public abstract class ObjectiveParent
     public string Text { get; protected set; }
     public string Description { get; protected set; }
 
-    UnityEvent Finished = new();
-    public virtual void Initiate(UnityAction ua) 
+    public UnityEvent Finished = new();
+    public virtual void Initiate() 
     {
         enabled = true;
-        Finished?.AddListener(ua);
         ShowWaypoint();
         IsFinished();
     }

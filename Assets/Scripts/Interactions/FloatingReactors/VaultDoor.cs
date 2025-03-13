@@ -15,7 +15,6 @@ public class VaultDoor : MonoBehaviour
     [SerializeField] Transform wheel;
 
     [Header("timelock")]
-    [SerializeField] bool hasTimelock = false;
     [SerializeField] int timelockLoud = 60;
     [SerializeField] int timelockStealth = 30;
     [SerializeField] TextMeshPro screen;

@@ -13,10 +13,10 @@ public class FindObjective : ObjectiveParent
         time = ti;
         ue.AddListener(ObjectiveDone);
     }
-    public override void Initiate(UnityAction ua)
+    public override void Initiate()
     {
         Countdown();
-        base.Initiate(ua);
+        base.Initiate();
     }
     protected override void ObjectiveDone()
     {

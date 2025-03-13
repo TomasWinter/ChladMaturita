@@ -15,9 +15,9 @@ public class CountObjective : ObjectiveParent
         required = r;
         ue.AddListener(CountUp);
     }
-    public override void Initiate(UnityAction ua)
+    public override void Initiate()
     {
-        base.Initiate(ua);
+        base.Initiate();
     }
     protected override void ObjectiveDone()
     {

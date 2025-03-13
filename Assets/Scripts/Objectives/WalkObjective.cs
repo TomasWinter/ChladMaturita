@@ -17,12 +17,12 @@ public class WalkObjective : ObjectiveParent
             target = tar;
     }
 
-    public override void Initiate(UnityAction ua)
+    public override void Initiate()
     {
         collisionDetector = collider.gameObject.AddComponent<CollisionDetector>();
         collisionDetector.Detected?.AddListener(ObjectiveDone);
         collisionDetector.Target = target;
-        base.Initiate(ua);
+        base.Initiate();
     }
 
     protected override void ObjectiveDone()

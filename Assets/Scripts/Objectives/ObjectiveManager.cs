@@ -21,7 +21,8 @@ public class ObjectiveManager : MonoBehaviour
         if (Objectives.Count > 0)
         {
             PlayerGuiManager.Instance.ChangeObjective(Objectives[currentObj], true);
-            Objectives[currentObj].Initiate(ObjCompleted);
+            Objectives[currentObj].Finished?.AddListener(ObjCompleted);
+            Objectives[currentObj].Initiate();
         }
         
     }
@@ -33,7 +34,8 @@ public class ObjectiveManager : MonoBehaviour
         if (currentObj < Objectives.Count)
         {
             PlayerGuiManager.Instance.ChangeObjective(Objectives[currentObj]);
-            Objectives[currentObj].Initiate(ObjCompleted);
+            Objectives[currentObj].Finished?.AddListener(ObjCompleted);
+            Objectives[currentObj].Initiate();
         }
         else
         {

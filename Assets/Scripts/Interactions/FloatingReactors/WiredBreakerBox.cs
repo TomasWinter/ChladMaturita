@@ -78,4 +78,9 @@ public class WiredBreakerBox : MonoBehaviour
         CoverOpened?.Invoke();
         Cover.isKinematic = false;
     }
+
+    public void AlarmOn()
+    {
+        GlobalEvents.Instance?.alarmRaised?.Invoke();
+    }
 }

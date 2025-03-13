@@ -8,7 +8,7 @@ public static class Settings
 {
     public static Keybinds Keybinds { get; set; } = new Keybinds();
 
-    public static float Sensitivity { get; set; } = 0.5f;
+    public static float Sensitivity { get; set; } = 0.25f;
 }
 public class Keybinds
 {

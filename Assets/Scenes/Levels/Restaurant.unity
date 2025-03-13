@@ -63972,7 +63972,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900088969}
-  - component: {fileID: 1900088970}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -64009,20 +64008,6 @@ Transform:
   - {fileID: 1667190257}
   m_Father: {fileID: 1207793626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1900088970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900088968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee98e7cb1cfd8894884472f7528ef957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightOn: {fileID: 2100000, guid: ca19eb06e7e2f11479cecf0bbaa49289, type: 2}
-  lightOff: {fileID: 2100000, guid: b4599969209a7d04abc483c9a20579bc, type: 2}
 --- !u!1001 &1925798365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71860,7 +71845,6 @@ MonoBehaviour:
   openTime: 5
   angle: -100
   wheel: {fileID: 1269986494}
-  hasTimelock: 1
   timelockLoud: 60
   timelockStealth: 30
   screen: {fileID: 465070573}
@@ -73957,7 +73941,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BadWireEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1900088970}
+      objectReference: {fileID: 435784373}
     - target: {fileID: 4292672895732286646, guid: 640fd36dbb2e1b944ba120a5a7dc675a,
         type: 3}
       propertyPath: GoodWireEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -73971,7 +73955,7 @@ PrefabInstance:
     - target: {fileID: 4292672895732286646, guid: 640fd36dbb2e1b944ba120a5a7dc675a,
         type: 3}
       propertyPath: BadWireEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOff
+      value: AlarmOn
       objectReference: {fileID: 0}
     - target: {fileID: 4292672895732286646, guid: 640fd36dbb2e1b944ba120a5a7dc675a,
         type: 3}
@@ -73986,7 +73970,7 @@ PrefabInstance:
     - target: {fileID: 4292672895732286646, guid: 640fd36dbb2e1b944ba120a5a7dc675a,
         type: 3}
       propertyPath: BadWireEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Lights, Assembly-CSharp
+      value: WiredBreakerBox, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4292672895732286646, guid: 640fd36dbb2e1b944ba120a5a7dc675a,
         type: 3}
