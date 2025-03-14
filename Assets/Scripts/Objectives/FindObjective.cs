@@ -18,10 +18,6 @@ public class FindObjective : ObjectiveParent
         Countdown();
         base.Initiate();
     }
-    protected override void ObjectiveDone()
-    {
-        base.ObjectiveDone();
-    }
 
     protected override void ShowWaypoint()
     {

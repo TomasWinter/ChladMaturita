@@ -14,7 +14,8 @@ public static class ObjectiveFactory
         UnityEvent ue = new();
         if (objT.mono != null)
         {
-            FieldInfo[] fields = objT.mono.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = 
+                objT.mono.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
             foreach (FieldInfo field in fields)
             {
                 if (field.Name == objT.eventName)
@@ -26,19 +27,22 @@ public static class ObjectiveFactory
         switch (objT.type)
         {
             case ObjectiveType.Simple:
-                return new SimpleObjective(objT.text,objT.description,ue,objT.waypointInfo);
+                return new SimpleObjective(
+                    objT.text,objT.description,ue,objT.waypointInfo);
             case ObjectiveType.Count:
-                return new CountObjective(objT.text,objT.description,ue,objT.amount,objT.active, objT.waypointInfo);
+                return new CountObjective(
+                    objT.text,objT.description,ue,objT.amount,objT.active, objT.waypointInfo);
             case ObjectiveType.Find:
-                return new FindObjective(objT.text, objT.description, ue, objT.amount, objT.waypointInfo);
+                return new FindObjective(
+                    objT.text, objT.description, ue, objT.amount, objT.waypointInfo);
             case ObjectiveType.Wait:
-                return new WaitObjective(objT.text, objT.description, objT.amount);
+                return new WaitObjective(
+                    objT.text, objT.description, objT.amount);
             case ObjectiveType.Walk:
-                return new WalkObjective(objT.text, objT.description, objT.collider, objT.waypointInfo);
-            default:
-                Debug.LogWarning("Type of objective is missing!");
-                return new SimpleObjective(objT.text, objT.description, ue, objT.waypointInfo);
+                return new WalkObjective(
+                    objT.text, objT.description, objT.collider, objT.waypointInfo);
         }
+        return new SimpleObjective(objT.text, objT.description, ue, objT.waypointInfo);
     }
 }
 

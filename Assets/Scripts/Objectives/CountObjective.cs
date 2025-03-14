@@ -15,14 +15,6 @@ public class CountObjective : ObjectiveParent
         required = r;
         ue.AddListener(CountUp);
     }
-    public override void Initiate()
-    {
-        base.Initiate();
-    }
-    protected override void ObjectiveDone()
-    {
-        base.ObjectiveDone();
-    }
 
     protected void CountUp()
     {
