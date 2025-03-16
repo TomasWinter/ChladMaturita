@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulldozerHealth : HealthScriptParent
+public class BulldozerHealth : EnemyHealth
 {
     [SerializeField] HelmetHealth helmet;
     bool isHelmet = true;

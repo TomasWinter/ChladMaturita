@@ -78,30 +78,25 @@ public class PlayerGuiManager : MonoBehaviour
     public void ChangeObjective(ObjectiveParent op,bool instant = false)
     {
         if (op == null)
-        {
             ObjectiveCompleted(null, false);
-        }
         else if (op is CountObjective oc && oc.showCount)
-        {
-            ObjectiveCompleted($"{oc.Text} {oc.timeDone}/{oc.required}", instant);
-        }
+            ObjectiveCompleted($"{oc.Text} {oc.timeDone}/{oc.required}", 
+                instant);
         else
-        {
             ObjectiveCompleted(op.Text, instant);
-        } 
     }
 
     private void ObjectiveCompleted(string txt, bool instant)
     {
         if (txt == null)
-        {
             objectiveText.color = new Color(0, 0.8f, 0, 1);
-        }
         else if (instant)
         {
             objectiveText.text = txt;
             objectiveText.ForceMeshUpdate();
-            objectiveGui.sizeDelta = new(objectiveText.GetRenderedValues(false).x+50, objectiveGui.sizeDelta.y);
+            objectiveGui.sizeDelta = new(
+                objectiveText.GetRenderedValues(false).x+50, 
+                objectiveGui.sizeDelta.y);
             objectiveText.color = new Color(1, 1, 1, 1);
         }
         else
@@ -122,7 +117,9 @@ public class PlayerGuiManager : MonoBehaviour
         }
         objectiveText.text = txt;
         objectiveText.ForceMeshUpdate();
-        objectiveGui.sizeDelta = new(objectiveText.GetRenderedValues(false).x+50, objectiveGui.sizeDelta.y);
+        objectiveGui.sizeDelta = new(
+            objectiveText.GetRenderedValues(false).x+50, 
+            objectiveGui.sizeDelta.y);
         objectiveText.color = new(1,1,1,0);
         for (int i = 0; i < 100; i++)
         {
@@ -132,10 +129,12 @@ public class PlayerGuiManager : MonoBehaviour
         }
     }
     //Interactions
-    public void DisplayInteract(bool show,string txt = "",KeyCode k = KeyCode.None)
+    public void DisplayInteract(bool show,string txt = "",
+        KeyCode k = KeyCode.None)
     {
         interactionText.gameObject.SetActive(show);
-        interactionText.text = txt.Replace("#", k.ToString().Split(".").Last().ToUpper());
+        interactionText.text = txt.Replace("#", 
+            k.ToString().Split(".").Last().ToUpper());
     }
 
     public void UpdateInteractBar(bool show,float percent)
@@ -150,13 +149,11 @@ public class PlayerGuiManager : MonoBehaviour
         {
             bagText.text = bag.Name;
             bagBackground.color = new(0.1176f, 0.1569f, 1.0f, 1f);
-            StartCoroutine(AnimateBag(true));
         }
         else
         {
             bagText.text = "";
             bagBackground.color = new(0.1020f, 0.1216f, 0.5569f, 0f);
-            StartCoroutine(AnimateBag(false));
         }
     }
 

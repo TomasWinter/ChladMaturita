@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SentryHealth : ObjectHealth
+public class SentryHealth : HealthScriptParent
 {
     [SerializeField] AudioClip sound;
     [SerializeField] ParticleSystem explosion;

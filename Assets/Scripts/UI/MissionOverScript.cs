@@ -25,18 +25,16 @@ public class MissionOverScript : MonoBehaviour
         Show(false);
         Refresh();
     }
-
-    private void Update()
-    {
-        Refresh();
-    }
     private void Refresh()
     {
-        stats.text = $"{LevelManager.Instance.Payout} G\n{(int)(LevelManager.Instance.Timer/60):D2}:{(int)(LevelManager.Instance.Timer % 60):D2}";
+        stats.text = $"{LevelManager.Instance.Payout} G\n" +
+            $"{(int)(LevelManager.Instance.Timer/60):D2}" +
+            $":{(int)(LevelManager.Instance.Timer % 60):D2}";
     }
 
     public void Show(bool success,string text = null)
     {
+        Refresh();
         if (success)
         {
             Background.color = new(0f,0.5f,0f,Background.color.a);

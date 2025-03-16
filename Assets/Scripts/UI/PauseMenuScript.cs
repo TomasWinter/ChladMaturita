@@ -11,7 +11,6 @@ public class PauseMenuScript : MonoBehaviour
     {
         UI.SetActive(false);
     }
-
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.P))
@@ -22,7 +21,6 @@ public class PauseMenuScript : MonoBehaviour
                 TurnOn();
         }
     }
-
     public void TurnOn()
     {
         isVisible = true;
@@ -30,7 +28,6 @@ public class PauseMenuScript : MonoBehaviour
         UI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
     }
-
     public void TurnOff()
     {
         isVisible = false;
@@ -38,7 +35,6 @@ public class PauseMenuScript : MonoBehaviour
         UI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
-
     public void GoToMainMenu()
     {
         isVisible = false;
@@ -46,7 +42,6 @@ public class PauseMenuScript : MonoBehaviour
         UI.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
-
     public void Quit()
     {
         Application.Quit();

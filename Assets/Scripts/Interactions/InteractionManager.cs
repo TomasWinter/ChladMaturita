@@ -23,24 +23,36 @@ public class InteractionManager : MonoBehaviour
         if (!forceStay)
         {
             Interactable interactable;
-            if (Physics.Raycast(transform.parent.position + new Vector3(0,0.5f,0), transform.forward, out RaycastHit hit, distance) && (interactable = hit.collider.GetComponent<Interactable>()) != null)
+            if (Physics.Raycast(
+                transform.parent.position + new Vector3(0,0.5f,0), 
+                transform.forward, out RaycastHit hit, distance) && 
+                (interactable = hit.collider.
+                GetComponent<Interactable>()) != null)
             {
-                if (currentInteractable != interactable && interactable.IsEnabled)
+                if (currentInteractable != interactable && 
+                    interactable.IsEnabled)
                 {
                     currentInteractable = interactable;
-                    ShowGUI(ref hit,ref interactable);
+                    ShowGUI(hit,interactable);
                     currentInteractable.SetPointing(true);
                 }
-                else if (currentInteractable != null && !currentInteractable.IsEnabled)
+                else if (currentInteractable != null &&
+                    !currentInteractable.IsEnabled)
                     ExitInteract();
             }
             else
                 ExitInteract();
         }
-        else if (currentInteractable != null && (!currentInteractable.IsEnabled || (currentInteractable.transform.position - transform.parent.position).magnitude > distance))
+        else if (currentInteractable != null && 
+            (!currentInteractable.IsEnabled || 
+            (currentInteractable.transform.position - 
+            transform.parent.position)
+            .magnitude > distance))
             ExitInteract();
 
-        if (currentInteractable != null && Input.GetKey(Settings.Keybinds.Interact) && currentInteractable.IsEnabled)
+        if (currentInteractable != null && 
+            Input.GetKey(Settings.Keybinds.Interact) && 
+            currentInteractable.IsEnabled)
         {
             if (currentTime == 0)
                 currentInteractable.IsInteracting(true);
@@ -52,7 +64,8 @@ public class InteractionManager : MonoBehaviour
                 currentTime = 0;
             }
             else
-                PlayerGuiManager.Instance.UpdateInteractBar(true, currentTime/currentInteractable.InteractionTime);
+                PlayerGuiManager.Instance.UpdateInteractBar(true, 
+                    currentTime/currentInteractable.InteractionTime);
         }
         else if (forceStay)
         {
@@ -63,20 +76,21 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    private void ShowGUI(ref RaycastHit hit, ref Interactable i)
+    private void ShowGUI(RaycastHit hit, Interactable i)
     {
-        //currentPointer = Instantiate(pointer, hit.transform.position + new Vector3(0,0.3f,0), Quaternion.identity);
-
-        string GuiText = (i.InteractionTime > 0 ? "Hold" : "Press") + " # to " + i.InteractionText;
-
-        PlayerGuiManager.Instance.DisplayInteract(true, GuiText, Settings.Keybinds.Interact);
+        string GuiText = 
+            (i.InteractionTime > 0 ? "Hold" : "Press") + 
+            " # to "
+            + i.InteractionText;
+        PlayerGuiManager.Instance.DisplayInteract(true, 
+            GuiText, 
+            Settings.Keybinds.Interact);
     }
 
     private void HideGui()
     {
         PlayerGuiManager.Instance.DisplayInteract(false);
         PlayerGuiManager.Instance.UpdateInteractBar(false, 0);
-        //Destroy(currentPointer);
     }
 
     private void ExitInteract()

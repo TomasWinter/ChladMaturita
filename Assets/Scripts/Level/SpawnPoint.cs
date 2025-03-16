@@ -19,19 +19,21 @@ public class SpawnPoint : MonoBehaviour
     {
         Randomise();
     }
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (StateManager.Instance?.State == WaveState.Loud && timer > spawnDelay)
-        {
-            timer = 0f;
-            Spawn();
-        }
-    }
 
     private void Randomise()
     {
         spawnDelay = Random.Range(randomDelayLower, spawnDelayUpper);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (StateManager.Instance?.State == WaveState.Loud && 
+            timer > spawnDelay)
+        {
+            timer = 0f;
+            Spawn();
+        }
     }
 
     private void Spawn()
@@ -40,10 +42,7 @@ public class SpawnPoint : MonoBehaviour
         {
             GameObject gameObject = spawnPool.fields.GetRandom().Prefab;
             foreach (Transform t in spawnGroup)
-            {
                 Instantiate(gameObject, t.position, t.rotation);
-            }
-            
         }
         else
         {

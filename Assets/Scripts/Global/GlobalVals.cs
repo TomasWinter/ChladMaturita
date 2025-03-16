@@ -23,22 +23,29 @@ public class GlobalVals : MonoBehaviour
     private void Awake()
     {
         WaypointTypeDictionary = new Dictionary<WaypointType, Sprite>() {
-            { WaypointType.Interact, Resources.Load<Sprite>("Waypoints/Interaction") },
-            { WaypointType.Target, Resources.Load<Sprite>("Waypoints/Target") },
-            { WaypointType.Walk, Resources.Load<Sprite>("Waypoints/Walk") },
-            { WaypointType.Arrow, Resources.Load<Sprite>("Waypoints/Waypoint") },
-            { WaypointType.Secure, Resources.Load<Sprite>("Waypoints/SecurePoint") }
+            { WaypointType.Interact, 
+                Resources.Load<Sprite>("Waypoints/Interaction") },
+            { WaypointType.Target, 
+                Resources.Load<Sprite>("Waypoints/Target") },
+            { WaypointType.Walk, 
+                Resources.Load<Sprite>("Waypoints/Walk") },
+            { WaypointType.Arrow, 
+                Resources.Load<Sprite>("Waypoints/Waypoint") },
+            { WaypointType.Secure, 
+                Resources.Load<Sprite>("Waypoints/SecurePoint") }
         };
 
         Instance = this;
 
-        RaycastLayermask = ~LayerMask.GetMask("Ignore Raycast", "Water", "UI", "Bullets", "PlayerHands", "Invisible");
+        RaycastLayermask = ~LayerMask.GetMask("Ignore Raycast", 
+            "Water", "UI", "Bullets", "PlayerHands", "Invisible");
     }
 
     public GameObject Splat { 
         get {
             GameObject x = Instantiate(SplatPrefab);
-            x.GetComponent<SpriteRenderer>().sprite = Splats[Random.Range(0, Splats.Length - 1)];
+            x.GetComponent<SpriteRenderer>().sprite = 
+                Splats[Random.Range(0, Splats.Length)];
             return x; 
         } }
 }

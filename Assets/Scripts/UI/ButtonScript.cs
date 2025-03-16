@@ -17,7 +17,6 @@ public class ButtonScript : MonoBehaviour
 
     public void Highlight(TextMeshProUGUI tmp)
     {
-        //tmp.text = "-" + tmp.text + "-";
         StartCoroutine(Bigger(tmp));
     }
 
@@ -41,7 +40,6 @@ public class ButtonScript : MonoBehaviour
 
     public void Unhighlight(TextMeshProUGUI tmp)
     {
-        //tmp.text = tmp.text.Replace("-", "");
         StartCoroutine(Smaller(tmp));
     }
 
